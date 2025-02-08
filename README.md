@@ -16,7 +16,7 @@ docker run -d -p 80:80 desafiosre-devops
 
 
 #  Definida a estância no EC2. DesafioSRE
-![1](https://github.com/user-attachments/assets/2baed3bc-ff59-4978-9b22-93292afa2841)
+![Descrição](F:\git-e-github\desafio-sre-devops\progress\1.png)
 
 
 #  Servidor Apache instalado, página html criada, configurado o firewall para permitir acesso do Apache e página web criada
