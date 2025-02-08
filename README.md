@@ -45,3 +45,11 @@ docker run -d -p 80:80 desafiosre-devops
 
 
 
+# Teste
+
+
+
+![1](https://github.com/user-attachments/assets/41633fc9-f04b-4b57-bed4-24f3762f65b5)
+
+
+
