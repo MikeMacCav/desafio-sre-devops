@@ -1,4 +1,4 @@
-
+#  Definida a estância no EC2. DesafioSRE
 ![1](https://github.com/user-attachments/assets/a42c883f-9bcb-4834-ac02-87412a3b49fd)
 
 
