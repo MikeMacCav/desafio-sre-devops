@@ -26,7 +26,14 @@
 # Instalando Docker
 ![8 - Instalando Docker](https://github.com/user-attachments/assets/7feb1b7f-8740-482d-b8cc-e9e4356bd578)
 
+# Versão do docker
+![9 - Versão do docker](https://github.com/user-attachments/assets/cdb6984f-7513-4960-850e-96477d95927c)
 
+# Dockerfile criado
+![10 - Dockerfile criado](https://github.com/user-attachments/assets/0c305524-c068-47af-89c3-4616c2d57989)
+
+# Executando Docker
+![11 - Executando Docker](https://github.com/user-attachments/assets/15e60187-2ea6-4184-a23b-5aad0a0e8e7b)
 
 
 
