@@ -6,10 +6,25 @@
 #  Servidor Apache instalado, página html criada, configurado o firewall para permitir acesso do Apache e página web criada
 ![2](https://github.com/user-attachments/assets/75bdc673-d1d8-4647-afa6-db9f75d03810)
 
+#  Página web
 
+![3](https://github.com/user-attachments/assets/0b6b672a-dc0f-4500-bbbe-301885ec3206)
 
+#  Servidor apache executando
 
+![4](https://github.com/user-attachments/assets/750f5a69-e23f-4910-b7a2-309baee5866c)
 
+# Update do sistema novamente
+![5 - update do sistema novamente](https://github.com/user-attachments/assets/2f898c45-3c76-43e9-85f1-2480294954ef)
+
+# Instalando MySQL
+![6 - instalando mysql](https://github.com/user-attachments/assets/52f0c91c-f72a-4d59-abe8-cb426869e1da)
+
+# Ativando o serviço mysql
+![7 - Ativando o serviço mysql](https://github.com/user-attachments/assets/f777f057-93a2-4106-9529-a6f88e533141)
+
+# Instalando Docker
+![8 - Instalando Docker](https://github.com/user-attachments/assets/7feb1b7f-8740-482d-b8cc-e9e4356bd578)
 
 
 
