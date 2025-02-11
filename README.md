@@ -35,6 +35,22 @@
 # Executando Docker
 ![11 - Executando Docker](https://github.com/user-attachments/assets/15e60187-2ea6-4184-a23b-5aad0a0e8e7b)
 
+# Acessando MySQL
+![12 - Acessando MySQL](https://github.com/user-attachments/assets/b476fa66-cddc-408a-b01d-d597dbe4e48f)
+
+# Criando banco de dados, acessando banco, criando tabela usuarios e inserindo dados na mesma tabela
+![13 - Criando banco de dados, acessando banco, criando tabela usuarios e inserindo dados na mesma tabela](https://github.com/user-attachments/assets/3953a241-0c7a-475c-8ed2-3b9f78859c35)
+
+# 14 - Acessando dados da tabela
+![14 - Acessando dados da tabela](https://github.com/user-attachments/assets/553f119c-a730-4a71-ba7b-ffd9ebccc98f)
+
+# Arquivo index.php editado para exibir dados da tabela do MySQL
+![15 - Arquivo index php editado para exibir dados da tabela do MySQL](https://github.com/user-attachments/assets/039908c4-90e7-4de0-aa48-7966501662c1)
+
+# Dados da tabela do banco de dados MySQL agora mostrado na página
+![16 - Dados da tabela do banco de dados MySQL agora mostrado na página](https://github.com/user-attachments/assets/cf66afb3-f4fe-486b-9d8b-6198df008c47)
+
+
 
 
 ## 🚀 Objetivo
