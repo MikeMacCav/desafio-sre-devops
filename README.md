@@ -50,6 +50,11 @@
 # Dados da tabela do banco de dados MySQL agora mostrado na página
 ![16 - Dados da tabela do banco de dados MySQL agora mostrado na página](https://github.com/user-attachments/assets/cf66afb3-f4fe-486b-9d8b-6198df008c47)
 
+# 17 - Teste de conexão com o container MySQL dentro do container Apache realizado com sucesso. 
+# Reinicializando container Apache. 
+# Cópia de index.php para container Apache feita com sucesso.
+# Descrição da tabela MySQL está constando no terminal.
+![17 - Teste de conexão com o container MySQL dentro do container Apache realizado com sucesso  Reinicializando container Apache  Cópia de index php para container Apache feito com sucesso](https://github.com/user-attachments/assets/27389696-b518-485f-9cce-2d961b5116ee)
 
 
 
