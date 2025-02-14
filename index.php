@@ -1,5 +1,5 @@
 <?php
-$servername = "container-mysql"; // Nome do container MySQL
+$servername = "172.17.0.3"; // Nome do container MySQL
 $username = "root";
 $password = "6283";
 $dbname = "sre_desafio";
