@@ -1,84 +1,39 @@
-# Desafio SRE/DevOps
+# DevOps Challenge - Desafio SRE
 
-#  Definida a estância no EC2. DesafioSRE
-![1](https://github.com/user-attachments/assets/a42c883f-9bcb-4834-ac02-87412a3b49fd)
+Este projeto consiste na configuração de um ambiente DevOps utilizando Docker, MySQL, Apache e PHP para exibir uma lista de usuários armazenada no banco de dados.
 
-#  Servidor Apache instalado, página html criada, configurado o firewall para permitir acesso do Apache e página web criada
-![2](https://github.com/user-attachments/assets/75bdc673-d1d8-4647-afa6-db9f75d03810)
+## 📌 Passos da Configuração
 
-#  Página web
+### 1️⃣ Configuração da Instância na AWS
+- Criei uma máquina virtual na AWS EC2 com **Ubuntu Server**.
+- Acesso da máquina via SSH.
 
-![3](https://github.com/user-attachments/assets/0b6b672a-dc0f-4500-bbbe-301885ec3206)
+### 2️⃣ Instalação do Docker e Configuração dos Containers
+- Instalei o Docker na máquina.
+- Criei um container para o banco de dados **MySQL** e outro para o servidor **Apache/PHP**.
+- Defini volumes persistentes para armazenar os dados.
 
-#  Servidor apache executando
+### 3️⃣ Banco de Dados MySQL
+- Criei um banco chamado **sre_desafio**.
+- Criei a tabela `usuarios` e inseri alguns registros.
+- Configurei a conexão entre o PHP e o MySQL usando a **rede interna do Docker**.
 
-![4](https://github.com/user-attachments/assets/750f5a69-e23f-4910-b7a2-309baee5866c)
+### 4️⃣ Configuração do Servidor Apache e PHP
+- Criei um **arquivo index.php** para exibir os usuários cadastrados no banco de dados.
+- Testei o funcionamento acessando **http://3.87.255.21:8080/index.php**(Não é um IP elástico,ele muda conforme eu interrompo a instância EC2 e inicio novamente). 
 
-# Update do sistema novamente
-![5 - update do sistema novamente](https://github.com/user-attachments/assets/2f898c45-3c76-43e9-85f1-2480294954ef)
+### 5️⃣ Melhorias na Estilização
+- Apliquei **CSS embutido** no arquivo **index.php** para tornar a página mais agradável e intuitiva.
+- Melhorei a organização da tabela e adicionei cores.
 
-# Instalando MySQL
-![6 - instalando mysql](https://github.com/user-attachments/assets/52f0c91c-f72a-4d59-abe8-cb426869e1da)
+## 📌 Tecnologias Utilizadas
+- **AWS EC2** para hospedagem.
+- **Docker** para gerenciamento dos serviços.
+- **MySQL** como banco de dados.
+- **Apache + PHP** para servir a aplicação.
+- **HTML + CSS** para exibição dos dados.
 
-# Ativando o serviço mysql
-![7 - Ativando o serviço mysql](https://github.com/user-attachments/assets/f777f057-93a2-4106-9529-a6f88e533141)
-
-# Instalando Docker
-![8 - Instalando Docker](https://github.com/user-attachments/assets/7feb1b7f-8740-482d-b8cc-e9e4356bd578)
-
-# Versão do docker
-![9 - Versão do docker](https://github.com/user-attachments/assets/cdb6984f-7513-4960-850e-96477d95927c)
-
-# Dockerfile criado
-![10 - Dockerfile criado](https://github.com/user-attachments/assets/0c305524-c068-47af-89c3-4616c2d57989)
-
-# Executando Docker
-![11 - Executando Docker](https://github.com/user-attachments/assets/15e60187-2ea6-4184-a23b-5aad0a0e8e7b)
-
-# Acessando MySQL
-![12 - Acessando MySQL](https://github.com/user-attachments/assets/b476fa66-cddc-408a-b01d-d597dbe4e48f)
-
-# Criando banco de dados, acessando banco, criando tabela usuarios e inserindo dados na mesma tabela
-![13 - Criando banco de dados, acessando banco, criando tabela usuarios e inserindo dados na mesma tabela](https://github.com/user-attachments/assets/3953a241-0c7a-475c-8ed2-3b9f78859c35)
-
-# 14 - Acessando dados da tabela
-![14 - Acessando dados da tabela](https://github.com/user-attachments/assets/553f119c-a730-4a71-ba7b-ffd9ebccc98f)
-
-# Arquivo index.php editado para exibir dados da tabela do MySQL
-![15 - Arquivo index php editado para exibir dados da tabela do MySQL](https://github.com/user-attachments/assets/039908c4-90e7-4de0-aa48-7966501662c1)
-
-# Dados da tabela do banco de dados MySQL agora mostrado na página
-![16 - Dados da tabela do banco de dados MySQL agora mostrado na página](https://github.com/user-attachments/assets/cf66afb3-f4fe-486b-9d8b-6198df008c47)
-
-# 17 - Teste de conexão com o container MySQL dentro do container Apache realizado com sucesso. 
-# Reinicializando container Apache. 
-# Cópia de index.php para container Apache feita com sucesso.
-# Descrição da tabela MySQL está constando no terminal.
-![17 - Teste de conexão com o container MySQL dentro do container Apache realizado com sucesso  Reinicializando container Apache  Cópia de index php para container Apache feito com sucesso](https://github.com/user-attachments/assets/27389696-b518-485f-9cce-2d961b5116ee)
-
-# 18 - Página web com novo endereço, rodando no containder Apache
-![18 - Página web com novo endereço, rodando no containder Apache](https://github.com/user-attachments/assets/eaa3c04b-abce-47a9-8505-8e81c0d7ba73)
-
-
-
-
-
-## 🚀 Objetivo
-Este repositório contém a configuração de um servidor Apache rodando em uma instância EC2 da AWS.
-
-## 🛠 Tecnologias Utilizadas
-- AWS EC2
-- Apache Web Server
-- MySQL
-- Docker
-
-## 📌 Como Rodar o Projeto
-```bash
-docker build -t desafiosre-devops .
-docker run -d -p 80:80 desafiosre-devops
-
-
-
-
-
-
+## 📌 Como Acessar
+1. Acesse o navegador e digite:  
+   `http://3.87.255.21:8080/index.php`
+2. A página exibirá uma tabela com a lista de usuários cadastrados.
