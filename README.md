@@ -20,7 +20,7 @@ Este projeto consiste na configuração de um ambiente DevOps utilizando Docker,
 
 ### 4️⃣ Configuração do Servidor Apache e PHP
 - Criei um **arquivo index.php** para exibir os usuários cadastrados no banco de dados.
-- Testei o funcionamento acessando **http://3.87.255.21:8080/index.php**(Não é um IP elástico,ele muda conforme eu interrompo a instância EC2 e inicio novamente). 
+- Testei o funcionamento acessando **http://3.87.255.21:8080/index.php**. (Não é um IP elástico,ele muda conforme eu interrompo a instância EC2 e inicio novamente). 
 
 ### 5️⃣ Melhorias na Estilização
 - Apliquei **CSS embutido** no arquivo **index.php** para tornar a página mais agradável e intuitiva.
