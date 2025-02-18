@@ -37,3 +37,7 @@ Este projeto consiste na configuração de um ambiente DevOps utilizando Docker,
 1. Acesse o navegador e digite:  
    `http://3.87.255.21:8080/index.php`
 2. A página exibirá uma tabela com a lista de usuários cadastrados.
+
+## 📌 Página Web em constante atualização
+
+![Página Web sujeita a alteração](https://github.com/user-attachments/assets/1d9de7db-791e-489a-b963-2deceeae38e1)
