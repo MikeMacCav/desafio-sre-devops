@@ -1,11 +1,13 @@
 <?php
-$servername = "172.17.0.2"; // Nome do container MySQL
+$servername = "db"; // Nome do serviço MySQL no Docker Compose
 $username = "root";
 $password = "6283";
 $dbname = "sre_desafio";
 
+// Criar conexão
 $conn = new mysqli($servername, $username, $password, $dbname);
 
+// Verificar conexão
 if ($conn->connect_error) {
     die("Erro na conexão: " . $conn->connect_error);
 }
@@ -66,7 +68,7 @@ if ($conn->connect_error) {
 <body>
 
     <h1>DevOps Challenge - Desafio SRE</h1>
-    <h2>Lista de Funcionários</h2>
+    <h2>Lista de Usuários</h2>
 
     <table>
         <tr>
