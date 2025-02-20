@@ -1,43 +1,199 @@
+# Retificando...
+
 # DevOps Challenge - Desafio SRE
 
-Este projeto consiste na configuração de um ambiente DevOps utilizando Docker, MySQL, Apache e PHP para exibir uma lista de usuários armazenada no banco de dados.
+Este repositório documenta todo o processo de criação do ambiente utilizando Docker, para executar uma aplicação PHP conectada a um banco de dados MySQL. O objetivo é facilitar para que pessoa possa seguir estas instruções e recriar o ambiente com facilidade.
 
-## 📌 Passos da Configuração
+## Tecnologias Utilizadas
+- Docker
+- Apache + PHP
+- MySQL
+- AWS EC2 (Opcional, se desejar rodar na nuvem)
 
-### 1️⃣ Configuração da Instância na AWS
-- Criei uma máquina virtual na AWS EC2 com **Ubuntu Server**.
-- Acesso da máquina via SSH.
+## Passo a Passo
 
-### 2️⃣ Instalação do Docker e Configuração dos Containers
-- Instalei o Docker na máquina.
-- Criei um container para o banco de dados **MySQL** e outro para o servidor **Apache/PHP**.
-- Defini volumes persistentes para armazenar os dados.
+### 1.Criando uma Instância EC2 na AWS
 
-### 3️⃣ Banco de Dados MySQL
-- Criei um banco chamado **sre_desafio**.
-- Criei a tabela `usuarios` e inseri alguns registros.
-- Configurei a conexão entre o PHP e o MySQL usando a **rede interna do Docker**.
+Passos para criar a instância EC2:
 
-### 4️⃣ Configuração do Servidor Apache e PHP
-- Criei um **arquivo index.php** para exibir os usuários cadastrados no banco de dados.
-- Testei o funcionamento acessando **http://3.87.255.21:8080/index.php**. (Não é um IP elástico,ele muda conforme eu interrompo a instância EC2 e inicio novamente). 
+Acesse o Console AWS: https://aws.amazon.com/pt/console/
 
-### 5️⃣ Melhorias na Estilização
-- Apliquei **CSS embutido** no arquivo **index.php** para tornar a página mais agradável e intuitiva.
-- Melhorei a organização da tabela e adicionei cores.
+Vá para AWS Console
 
-## 📌 Tecnologias Utilizadas
-- **AWS EC2** para hospedagem.
-- **Docker** para gerenciamento dos serviços.
-- **MySQL** como banco de dados.
-- **Apache + PHP** para servir a aplicação.
-- **HTML + CSS** para exibição dos dados.
+Faça login na sua conta AWS
 
-## 📌 Como Acessar
-1. Acesse o navegador e digite:  
-   `http://3.87.255.21:8080/index.php`
-2. A página exibirá uma tabela com a lista de usuários cadastrados.
+Navegue até o EC2:
 
-## 📌 Página Web em constante atualização
+No painel de serviços, procure por EC2 e clique para abrir
+
+Inicie uma nova instância:
+
+Clique no botão Launch Instance
+
+Escolha um nome para sua instância (ex: desafio-sre-devops)
+
+Escolha a imagem do sistema operacional:
+
+Selecione a opção Ubuntu Server 22.04 LTS
+
+Escolha o tipo de instância:
+
+Selecione a opção t2.micro (gratuito no nível AWS Free Tier)
+
+Configurar chave SSH:
+
+Crie uma nova chave SSH ou selecione uma existente
+
+Baixe o arquivo .pem e guarde-o com segurança
+
+Configurar as regras de segurança:
+
+Permita SSH (porta 22) para acessar a instância
+
+Permita HTTP (porta 80) para acesso ao site
+
+Permita porta 8080 para rodar a aplicação no Apache
+
+Permita porta 3306 para acesso ao MySQL (opcional)
+
+Lançar a instância:
+
+Revise as configurações e clique em Launch Instance
+
+Aguarde a instância iniciar
+
+Acesse a instância via SSH:
+
+No terminal, execute: 
+
+ssh -i sua-chave.pem ubuntu@IP_DA_INSTANCIA
+
+Agora sua instância EC2 está pronta para receber a configuração do ambiente Docker!
+
+### 2. Instalar o Docker
+Se o Docker ainda não estiver instalado, execute:
+```bash
+sudo apt update
+sudo apt install -y docker.io
+sudo systemctl enable docker
+sudo systemctl start docker
+```
+
+### 3. Clonar o Repositório
+```bash
+git clone https://github.com/seu-usuario/desafio-sre-devops.git
+cd desafio-sre-devops
+```
+
+### 4. Criar e Configurar o Container do MySQL
+
+#### Criar o Dockerfile para o MySQL
+Dentro da pasta `mysql/`, crie o `Dockerfile` com o seguinte conteúdo:
+```Dockerfile
+FROM mysql:5.7
+ENV MYSQL_ROOT_PASSWORD=metroid (a senha da sua escolha)
+ENV MYSQL_DATABASE=sre_desafio (o nome do banco de dados da sua escolha) 
+COPY init.sql /docker-entrypoint-initdb.d/
+```
+
+#### Criar o script SQL de inicialização (`init.sql`)
+Crie um arquivo `mysql/init.sql` com o seu conteúdo, segue exemplo:
+```sql
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL
+);
+INSERT INTO usuarios (nome, email) VALUES
+('Vitor', 'vitor@gmail.com'),
+('Ana', 'ana@gmail.com'),
+('Michael', 'michaelmcavalcante@gmail.com'),
+('Maxwell', 'maxwellwolf@hotmail.com'),
+('Lina', 'linamikemax@gmail.com'),
+('Warley', 'warleym.araujo@gmail.com');
+```
+
+#### Criar o container do MySQL
+```bash
+cd mysql
+docker build -t custom-mysql .
+docker run -d --name container-mysql -e MYSQL_ROOT_PASSWORD=metroid -e MYSQL_DATABASE=sre_desafio -p 3306:3306 custom-mysql
+```
+
+### 5. Criar e Configurar o Container do Apache + PHP
+
+#### Criar o Dockerfile para o Apache
+Dentro da pasta `apache/`, crie o `Dockerfile` com o seguinte conteúdo:
+```Dockerfile
+FROM php:7.4-apache
+RUN docker-php-ext-install mysqli
+COPY index.php /var/www/html/
+```
+
+#### Criar o `index.php`
+Crie um arquivo `apache/index.php` com o seu conteúdo, segue exemplo:
+```php
+<?php
+$servername = "container-mysql";
+$username = "root";
+$password = "metroid";
+$dbname = "sre_desafio";
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("Conexão falhou: " . $conn->connect_error);
+}
+$result = $conn->query("SELECT * FROM usuarios");
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DevOps Challenge - Desafio SRE</title>
+</head>
+<body>
+    <h2>Lista de Usuários</h2>
+    <table border='1'>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+        </tr>
+        <?php while ($row = $result->fetch_assoc()) { ?>
+        <tr>
+            <td><?= $row["id"] ?></td>
+            <td><?= $row["nome"] ?></td>
+            <td><?= $row["email"] ?></td>
+        </tr>
+        <?php } ?>
+    </table>
+</body>
+</html>
+```
+
+#### Criar o container do Apache + PHP
+```bash
+cd ../apache
+docker build -t custom-apache .
+docker run -d --name apache-container --link container-mysql -p 8080:80 custom-apache
+```
+
+### 6. Acessar a Aplicação
+No navegador, acesse:
+```
+http://<IP-DA-SUA-EC2>:8080
+```
+Se estiver rodando localmente:
+```
+http://localhost:8080
+```
+
+Se os passos foram seguidos corretamente, a sua Página/aplicação Web será exibida na tela com dados do seu banco MySQL. 🚀
+
+## Nota
+ Caso encontre problemas, verifique os logs dos containers:
+```bash
+docker logs container-mysql
+docker logs apache-container
+```
+## 📌 Página em constante atualização
 
 ![Página Web sujeita a alteração](https://github.com/user-attachments/assets/1d9de7db-791e-489a-b963-2deceeae38e1)
