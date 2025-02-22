@@ -1,14 +1,14 @@
-# Retificando...
-
 # DevOps Challenge - Desafio SRE
 
-Este repositório documenta todo o processo de criação do ambiente utilizando Docker, para executar uma aplicação PHP conectada a um banco de dados MySQL. O objetivo é facilitar para que pessoa possa seguir estas instruções e recriar o ambiente com facilidade.
+Este repositório documenta todo o processo de criação do ambiente utilizando Docker, para executar uma aplicação PHP conectada a um banco de dados MySQL. O objetivo é facilitar para que a pessoa possa seguir estas instruções e recriar o ambiente com facilidade.
 
 ## Tecnologias Utilizadas
 - Docker
 - Apache + PHP
 - MySQL
-- AWS EC2 (Opcional, se desejar rodar na nuvem)
+- AWS EC2* (Opcional, se desejar rodar na nuvem)
+*Obs: É possível criar uma instância em algum provedor da nuvem como AWS, Azure, GCP ou DigitalOcean. Ou ainda criar uma máquina virtual com softwares como Virtual Box, VMware e Windows Subsystem for Linux(os mais conhecidos), mas optei por fazer esse tutorial com o AWS EC2, por ser mais prático e leve para PCs não tão rápidos, já que o processamento fica na nuvem e ainda por eu considerar mais fácil e intuitivo de configurar para iniciantes. Para não haver cobranças na sua conta AWS recomendo não configurar IP Elástico.
+Com isso, segue o tutorial.
 
 ## Passo a Passo
 
@@ -18,55 +18,55 @@ Passos para criar a instância EC2:
 
 Acesse o Console AWS: https://aws.amazon.com/pt/console/
 
-Vá para AWS Console
+Vá para AWS Console.
 
-Faça login na sua conta AWS
+Faça login na sua conta AWS.
 
 Navegue até o EC2:
 
-No painel de serviços, procure por EC2 e clique para abrir
+No painel de serviços, procure por EC2 e clique para abrir.
 
 Inicie uma nova instância:
 
-Clique no botão Launch Instance
+Clique no botão Launch Instance ou Executar Instâncias.
 
-Escolha um nome para sua instância (ex: desafio-sre-devops)
+Escolha um nome para sua instância (ex: desafio-sre-devops), mas recomendo que escolha um nome diferente.
 
 Escolha a imagem do sistema operacional:
 
-Selecione a opção Ubuntu Server 22.04 LTS
+Selecione a opção Ubuntu Server 24.04 LTS, que estou utilizando neste tutorial.
 
 Escolha o tipo de instância:
 
-Selecione a opção t2.micro (gratuito no nível AWS Free Tier)
+Selecione a opção t2.micro (gratuito no nível AWS Free Tier).
 
 Configurar chave SSH:
 
-Crie uma nova chave SSH ou selecione uma existente
+Crie uma nova chave SSH ou selecione uma existente.
 
-Baixe o arquivo .pem e guarde-o com segurança
+Baixe o arquivo .pem, coloque um nome e guarde-o com segurança em alguma pasta do computador, você vai precisar dele.
 
 Configurar as regras de segurança:
 
-Permita SSH (porta 22) para acessar a instância
+Permita SSH (porta 22) para acessar a instância.
 
-Permita HTTP (porta 80) para acesso ao site
+Permita HTTP (porta 80) para acesso ao site.
 
-Permita porta 8080 para rodar a aplicação no Apache
+Permita porta 8080 para rodar a aplicação no Apache, se não tiver disponível é só configurar TCP Personalizável em grupos de segurança na aba Segurança com a instância pronta para uso.
 
-Permita porta 3306 para acesso ao MySQL (opcional)
+Permita porta 3306 para acesso ao MySQL (opcional).
 
 Lançar a instância:
 
-Revise as configurações e clique em Launch Instance
+Revise as configurações e clique em Launch Instance ou Executar Instância.
 
-Aguarde a instância iniciar
+Aguarde a instância iniciar.
 
 Acesse a instância via SSH:
 
 No terminal, execute: 
 
-ssh -i sua-chave.pem ubuntu@IP_DA_INSTANCIA
+ssh -i sua-chave.pem ubuntu@IP_DA_INSTANCIA, "sua-chave" é nome da chave que você colocou, "IP_DA_INSTANCIA" é o Endereço IPv4 público que você verá quando conectar a instância.
 
 Agora sua instância EC2 está pronta para receber a configuração do ambiente Docker!
 
@@ -82,13 +82,14 @@ sudo systemctl start docker
 ### 3. Clonar o Repositório
 ```bash
 git clone https://github.com/seu-usuario/desafio-sre-devops.git
+("seu-usuario" é o nome de usuário que você definiu ao criar a sua conta no github, "desafio-sre-devops" é um exemplo de nome de repositório mas também recomendo colocar um nome diferente.)
 cd desafio-sre-devops
 ```
 
 ### 4. Criar e Configurar o Container do MySQL
 
 #### Criar o Dockerfile para o MySQL
-Dentro da pasta `mysql/`, crie o `Dockerfile` com o seguinte conteúdo:
+Dentro da pasta `mysql/`, crie o `Dockerfile` com o seguinte conteúdo, segue exemplo:
 ```Dockerfile
 FROM mysql:5.7
 ENV MYSQL_ROOT_PASSWORD=metroid (a senha da sua escolha)
