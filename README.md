@@ -62,8 +62,9 @@ Revise as configurações e clique em Launch Instance ou Executar Instância.
 
 Aguarde a instância iniciar.
 
-Acesse a instância via SSH:
-
+Acesse a instância via SSH*:
+Obs.*: Para iniciar a sua instância, basta habilitar a instância recém criada e clicar em Conectar(se preferir iniciar direto no provedor EC2 no navegador). Se preferir acessar a sua instância pelo terminal Gitbash já instalado no seu computador siga as instruções abaixo:
+ 
 No terminal, execute: 
 
 ssh -i sua-chave.pem ubuntu@IP_DA_INSTANCIA, "sua-chave" é nome da chave que você colocou, "IP_DA_INSTANCIA" é o Endereço IPv4 público que você verá quando conectar a instância.
