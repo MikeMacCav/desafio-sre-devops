@@ -7,7 +7,7 @@ Este repositório documenta todo o processo de criação do ambiente utilizando 
 - Apache + PHP
 - MySQL
 - AWS EC2* (Opcional, se desejar rodar na nuvem)
-*Obs: É possível criar uma instância em algum provedor da nuvem como AWS, Azure, GCP ou DigitalOcean. Ou ainda criar uma máquina virtual com softwares como Virtual Box, VMware e Windows Subsystem for Linux(os mais conhecidos), mas optei por fazer esse tutorial com o AWS EC2, por ser mais prático e leve para PCs não tão rápidos, já que o processamento fica na nuvem e ainda por eu considerar mais fácil e intuitivo de configurar para iniciantes. Para não haver cobranças na sua conta AWS recomendo não configurar IP Elástico.
+- *Obs: É possível criar uma instância em algum provedor da nuvem como AWS, Azure, GCP ou DigitalOcean. Ou ainda criar uma máquina virtual com softwares como Virtual Box, VMware e Windows Subsystem for Linux(os mais conhecidos), mas optei por fazer esse tutorial com o AWS EC2, por ser mais prático e leve para PCs não tão rápidos, já que o processamento fica na nuvem e ainda por eu considerar mais fácil e intuitivo de configurar para iniciantes. Para não haver cobranças na sua conta AWS recomendo não configurar IP Elástico.Para não gastar as 750 horas do seu plano gratuito no nível AWS Free Tier recomendo interromper a instância EC2.
 Com isso, segue o tutorial.
 
 ## Passo a Passo
